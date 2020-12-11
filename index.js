@@ -1,13 +1,24 @@
 
 
-const WebSocket = require('ws');
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
 
-const wss = new WebSocket.Server({ port: 8080 });
+const express= require('express');
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-  });
+  const { Server } = require('ws');
 
-  ws.send('something');
+const wss = new Server({ server });
+
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
 });
+
+setInterval(() => {
+  wss.clients.forEach((client) => {
+    client.send(new Date().toTimeString());
+  });
+}, 1000);
