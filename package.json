@@ -1,16 +1,29 @@
 {
-  "name": "nodeserver",
+  "name": "unitytestserver",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "bufferutil": "^4.0.2",
+    "utf-8-validate": "^5.0.3",
+    "ws": "^7.4.1"
   },
+  "devDependencies": {},
+  "engines": {
+    "node": "14.15.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burakhalefoglu/UnityTestServer.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "ws": "^7.1.2"
-  }
+  "bugs": {
+    "url": "https://github.com/burakhalefoglu/UnityTestServer/issues"
+  },
+  "homepage": "https://github.com/burakhalefoglu/UnityTestServer#readme"
 }
